@@ -1,0 +1,16 @@
+pipeline {
+    agent {label 'docker'}
+    stages {
+        stage('docker') {
+            steps {
+                sh """curl -fsSL https://get.docker.com -o get-docker.sh
+                      sh get-docker.sh
+                      sudo usermod -aG docker ubuntu
+                      exit
+                      ssh ubuntu@54.175.47.137
+                      docker info
+                   """
+            }
+        }
+    }
+}
